@@ -1,0 +1,46 @@
+color red = #FF0000;
+
+float ballx, bally, balld;
+
+float vx, vy;
+
+float ax, ay;
+
+void setup() {
+  size(600, 600, P2D);
+  ballx = width/2;
+  bally = height/2;
+  balld = 50;
+
+  vx = 8;
+  vy = -4;
+  
+  ax = 0;
+  ay= -1;
+}
+
+void draw() {
+  strokeWeight(2);
+  stroke(0);
+  fill(red);
+  circle(ballx, bally, balld);
+
+  ballx += vx;
+  bally += vy;
+
+  vx = vx + ax;
+  vy = vy + ay;
+
+  if (bally<=0) {
+    vy=vy*-0.95;
+  }
+  if (bally >= height) {
+    vy=vy*-1;
+  }
+  if (ballx <= 0) {
+    vx = vx*-1;
+  }
+  if (ballx >= width) {
+   vx=vx*-1;
+  }
+}
