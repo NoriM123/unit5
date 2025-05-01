@@ -4,6 +4,8 @@ float ballx, bally, balld;
 
 float vx, vy;
 
+float player1y, player1x, player2y, player2x;
+
 float ax, ay;
 
 void setup() {
@@ -32,15 +34,18 @@ void draw() {
   vy = vy + ay;
 
   if (bally<=0) {
-    vy=vy*-0.95;
+    vy = vy * -0.95;
   }
   if (bally >= height) {
-    vy=vy*-1;
+    vy = vy * -1;
   }
   if (ballx <= 0) {
     vx = vx*-1;
   }
   if (ballx >= width) {
-   vx=vx*-1;
+    vx = vx*-1;
   }
+  if(dist(player1x, player1y, ballx, bally) <= d/2 + balld/2);
+    vx = 
+    vy =
 }
