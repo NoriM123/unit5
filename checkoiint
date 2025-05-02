@@ -19,6 +19,9 @@ boolean wKey, aKey, sKey, dKey, upKey, downKey, leftKey, rightKey;
 
 
 void setup() {
+  fail = new SoundFile(this, "FAILURE.wav");
+  music = new SoundFile(this, "MUSIC.mp3");
+
   size(600, 600, P2D);
   x = width/2;
   y = height/2;
@@ -118,3 +121,8 @@ void keyReleased() {
   if (keyCode == RIGHT) rightKey = false;
   if (keyCode == LEFT) leftKey = false;
 }
+
+void mouseReleased(){
+  fail.stop();
+  fail.play();
+  }
