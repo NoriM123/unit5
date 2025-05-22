@@ -6,8 +6,11 @@ final int GAME = 2;
 final int PAUSE = 3;
 final int GAMEOVER = 4;
 
+float leftx, lefty, rightx, righty;
+
 void setup() {
   size(800, 600);
+  
   rectMode(CENTER);
   mode = INTRO;
 }
