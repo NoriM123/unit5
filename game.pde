@@ -4,10 +4,31 @@ void game() {
   paddleright();
   baller();
   pausebutton();
-  
+
   if (wkey == true) lefty = lefty - 5;
   if (skey == true) lefty = lefty + 5;
+
+  if (upkey == true) righty = righty - 5;
+  if (downkey == true) righty = righty + 5;
+
+  //movement
+
+  ballx = ballx + vx;
+  bally = bally + vy;
+
+  //collisions
+
+  if (dist(rightx, righty, ballx, bally) <= rightd/2 + balld/2) {
+   vx = vx * -1; 
+  }
   
+  if (dist(leftx, lefty, ballx, bally) <= leftd/2 + balld/2) {
+    vx = vx * -1;
+  }
+
+
+
+  //collisions
 }
 
 void gameClicks() {
@@ -15,7 +36,7 @@ void gameClicks() {
     mode = PAUSE;
   }
 }
- 
+
 ////////////////////////////////////////////////////////////
 
 void pausebutton() {

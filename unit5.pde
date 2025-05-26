@@ -10,6 +10,10 @@ float leftx, lefty, leftd, rightx, righty, rightd;
 float ballx, bally, balld;
 
 boolean wkey, skey, upkey, downkey;
+float vx = 5;
+float vy = -5;
+//float vx = random(5,-5);
+//float vy = random(-5, 5);
 
 void setup() {
   size(800, 600, P2D);
@@ -31,6 +35,8 @@ void setup() {
 
   rectMode(CENTER);
   mode = INTRO;
+  
+  wkey = skey = upkey = downkey = false;
 }
 
 void draw() {
