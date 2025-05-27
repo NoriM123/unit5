@@ -4,6 +4,7 @@ void game() {
   paddleright();
   baller();
   pausebutton();
+  lines();
 
   if (wkey == true) lefty = lefty - 5;
   if (skey == true) lefty = lefty + 5;
@@ -18,15 +19,30 @@ void game() {
 
   //collisions
 
+  //vx = bx - px
+  //vy = py - bx
+  //float  vx = (ballx - rightx)/10;
+  //float  vy = (bally - righty)/10;
+
   if (dist(rightx, righty, ballx, bally) <= rightd/2 + balld/2) {
-   vx = vx * -1; 
+    vx =  (ballx-rightx)/10;
+    vy =  (bally - righty)/10;
   }
-  
+
   if (dist(leftx, lefty, ballx, bally) <= leftd/2 + balld/2) {
-    vx = vx * -1;
+    vx =  (ballx-leftx)/10;
+    vy =  (bally-lefty)/10;
   }
 
+  if (bally <= 25) {
+    vy = vy * -1;
+    bally = 25;
+  }
 
+  if (bally >= height-25) {
+    vy = vy * -1;
+    bally = height-25;
+  }
 
   //collisions
 }
@@ -63,4 +79,18 @@ void paddleright() {
 void baller() {
   fill(0);
   circle(ballx, bally, balld);
+}
+
+void lines() {
+  fill(0);
+  stroke(0);
+  strokeWeight(5);
+  line(width/2, 0, width/2, height);
+}
+
+void scoreboard() {
+  textSize(40);
+  fill(0);
+  text(leftscore, width/4, 100);
+  text(rightscore, 3*width/4, 100);
 }
