@@ -5,6 +5,7 @@ final int INTRO = 1;
 final int GAME = 2;
 final int PAUSE = 3;
 final int GAMEOVER = 4;
+final int GAMEOVER2 = 5;
 
 float leftx, lefty, leftd, rightx, righty, rightd;
 float ballx, bally, balld;
@@ -50,6 +51,8 @@ void draw() {
     pause();
   } else if (mode == GAMEOVER) {
     gameover();
+  } else if (mode == GAMEOVER2) {
+    gameover2();
   } else {
     println("Mode Error" + mode);
   }

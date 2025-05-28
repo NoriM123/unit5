@@ -5,12 +5,37 @@ void game() {
   baller();
   pausebutton();
   lines();
+  
+  scoreboard();
 
   if (wkey == true) lefty = lefty - 5;
   if (skey == true) lefty = lefty + 5;
 
   if (upkey == true) righty = righty - 5;
   if (downkey == true) righty = righty + 5;
+
+  //scoring
+  
+  if (ballx < 0) {
+    rightscore = rightscore + 1;
+    ballx = width/2;
+    bally = height/2;
+  }
+  
+  if (ballx > width) {
+    leftscore = leftscore + 1;
+    ballx = width/2;
+    bally = height/2;
+  }
+  
+  if (leftscore > 4) {
+    mode = GAMEOVER;
+  }
+  
+  if (rightscore > 4) {
+   mode = GAMEOVER2; 
+  }
+
 
   //movement
 
@@ -55,6 +80,8 @@ void gameClicks() {
 
 ////////////////////////////////////////////////////////////
 
+
+
 void pausebutton() {
   //pausebutton
   fill(0);
@@ -91,6 +118,6 @@ void lines() {
 void scoreboard() {
   textSize(40);
   fill(0);
-  text(leftscore, width/4, 100);
-  text(rightscore, 3*width/4, 100);
+  text(leftscore, width/4, 70);
+  text(rightscore, 3*width/4, 70);
 }
