@@ -1,3 +1,5 @@
+boolean ballMoving = false;
+
 void game() {
   background(255);
   paddleleft();
@@ -9,11 +11,11 @@ void game() {
 
   scoreboard();
 
-  if (wkey == true) lefty = lefty - 5;
-  if (skey == true) lefty = lefty + 5;
+  if (wkey == true && lefty  >  105) lefty = lefty - 5;
+  if (skey == true && lefty  < height-105) lefty = lefty + 5;
 
-  if (upkey == true) righty = righty - 5;
-  if (downkey == true) righty = righty + 5;
+  if (upkey == true && righty >  105)  righty = righty - 5;
+  if (downkey == true && righty < height-105) righty = righty + 5;
 
   //scoring
 
@@ -40,96 +42,113 @@ void game() {
   if (rightscore > 4) {
     mode = GAMEOVER2;
   }
-
-
-    //movement
-
-    ballx = ballx + vx;
-    bally = bally + vy;
-
-    //collisions
-
-    //vx = bx - px
-    //vy = py - bx
-    //float  vx = (ballx - rightx)/10;
-    //float  vy = (bally - righty)/10;
-
-    if (dist(rightx, righty, ballx, bally) <= rightd/2 + balld/2) {
-      vx =  (ballx-rightx)/10;
-      vy =  (bally - righty)/10;
-    }
-
-    if (dist(leftx, lefty, ballx, bally) <= leftd/2 + balld/2) {
-      vx =  (ballx-leftx)/10;
-      vy =  (bally-lefty)/10;
-    }
-
-    if (bally <= 25) {
-      vy = vy * -1;
-      bally = 25;
-    }
-
-    if (bally >= height-25) {
-      vy = vy * -1;
-      bally = height-25;
-    }
-
-    //collisions
-  }
-
-  void gameClicks() {
-    if (dist(20, 20, mouseX, mouseY) < 10) {
-      mode = PAUSE;
+  if (timer > 0) {
+    ballx = width/2;
+    bally = height/2;
+  } else {
+    if (ballMoving == false) {
+      vx = random(-5, 5);
+      vy = random(-5, 5);
+      ballMoving = true;
     }
   }
 
-  ////////////////////////////////////////////////////////////
 
+  //movement
 
+  ballx = ballx + vx;
+  bally = bally + vy;
 
-  void pausebutton() {
-    //pausebutton
-    fill(0);
-    circle(20, 20, 20);
+  //collisions
 
-    fill(255);
-    noStroke();
-    rect(17, 20, 3, 10, 5);
-    rect(23, 20, 3, 10, 5);
+  //vx = bx - px
+  //vy = py - bx
+  //float  vx = (ballx - rightx)/10;
+  //float  vy = (bally - righty)/10;
+
+  if (dist(rightx, righty, ballx, bally) <= rightd/2 + balld/2) {
+    vx =  (ballx-rightx)/10;
+    vy =  (bally - righty)/10;
   }
 
-  void paddleleft() {
-    fill(0);
-    circle(leftx, lefty, leftd);
+  if (dist(leftx, lefty, ballx, bally) <= leftd/2 + balld/2) {
+    vx =  (ballx-leftx)/10;
+    vy =  (bally-lefty)/10;
   }
 
-  void paddleright() {
-    fill(0);
-    circle(rightx, righty, rightd);
+  if (bally <= 25) {
+    vy = vy * -1;
+    bally = 25;
   }
 
-  void baller() {
-    fill(0);
-    circle(ballx, bally, balld);
+  if (bally >= height-25) {
+    vy = vy * -1;
+    bally = height-25;
   }
 
-  void lines() {
-    fill(0);
-    stroke(0);
-    strokeWeight(5);
-    line(width/2, 0, width/2, height);
-  }
+  //collisions
+}
 
-  void scoreboard() {
-    textSize(40);
-    fill(0);
-    text(leftscore, width/4, 70);
-    text(rightscore, 3*width/4, 70);
+void gameClicks() {
+  if (dist(20, 20, mouseX, mouseY) < 10) {
+    mode = PAUSE;
   }
+}
 
-  void timer() {
-    fill(0);
-    textSize(40);
-    text(timer, width/2-10, 70);
-    timer = timer - 1;
-  }
+////////////////////////////////////////////////////////////
+
+
+
+void pausebutton() {
+  //pausebutton
+  fill(0);
+  circle(20, 20, 20);
+
+  fill(255);
+  noStroke();
+  rect(17, 20, 3, 10, 5);
+  rect(23, 20, 3, 10, 5);
+}
+
+void paddleleft() {
+  fill(0);
+  circle(leftx, lefty, leftd);
+}
+
+void paddleright() {
+  fill(0);
+  circle(rightx, righty, rightd);
+}
+
+void baller() {
+  fill(0);
+  circle(ballx, bally, balld);
+}
+
+void lines() {
+  fill(0);
+  stroke(0);
+  strokeWeight(5);
+  line(width/2, 0, width/2, height);
+}
+
+void scoreboard() {
+  textSize(40);
+  fill(0);
+  text(leftscore, width/4, 70);
+  text(rightscore, 3*width/4, 70);
+}
+
+void timer() {
+  // fill(0);
+  // textSize(40);
+  // text(timer, width/2-10, 70);
+  timer = timer - 1;
+}
+
+void resetServe() {
+  ballx = width/2;
+  bally = height/2;
+  timer = 150;
+  ballMoving = false;
+}

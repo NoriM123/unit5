@@ -15,5 +15,6 @@ void gameover2Clicks() {
     mode = INTRO;
     leftscore = 0;
     rightscore = 0;
+    resetServe();
   }
 }

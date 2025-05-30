@@ -12,5 +12,6 @@ void pause() {
 void pauseClicks() {
   if (dist(width/2, height/2, mouseX, mouseY) < 50) {
    mode = GAME;     
+   resetServe();
   }
 }
