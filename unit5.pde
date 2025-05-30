@@ -14,6 +14,7 @@ boolean wkey, skey, upkey, downkey;
 
 float vx = random(5, -5);
 float vy = random(-5, 5);
+boolean = AI;
 
 
 int leftscore, rightscore, timer;

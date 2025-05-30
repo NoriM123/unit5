@@ -15,7 +15,12 @@ void intro() {
 
 void introClicks() {
   //single player
-  if(mouseX > width*3/4-100 && mouseX < width*3/4+100 && mouseY < height/2 +50 && mouseY > height/2-50) {
-  mode = GAME;
-  }  
+  if (mouseX > width*3/4-100 && mouseX < width*3/4+100 && mouseY < height/2 +50 && mouseY > height/2-50) {
+    mode = GAME;
+    AI = false;
+  }
+
+  if (mouseX > width/4 -100 && mouseX < width/4 + 100 && mouseY < height/2 +50 && mouseY > height/2 -50) {
+    AI = true;
+  }
 }

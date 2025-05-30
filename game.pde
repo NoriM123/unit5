@@ -11,12 +11,15 @@ void game() {
 
   scoreboard();
 
-  if (wkey == true && lefty  >  105) lefty = lefty - 5;
-  if (skey == true && lefty  < height-105) lefty = lefty + 5;
-
-  if (upkey == true && righty >  105)  righty = righty - 5;
-  if (downkey == true && righty < height-105) righty = righty + 5;
-
+    if (wkey == true && lefty  >  105) lefty = lefty - 5;
+    if (skey == true && lefty  < height-105) lefty = lefty + 5;
+  if (AI == false) {
+    if (upkey == true && righty >  105 )  righty = righty - 5;
+    if (downkey == true && righty < height-105) righty = righty + 5;
+  } else {
+    righty = bally; 
+    
+  }
   //scoring
 
   if (ballx < 0) {
