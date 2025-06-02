@@ -1,4 +1,5 @@
 //pong
+import processing.sound.*;
 
 int mode;
 final int INTRO = 1;
@@ -14,13 +15,16 @@ boolean wkey, skey, upkey, downkey;
 
 float vx = random(5, -5);
 float vy = random(-5, 5);
-boolean = AI;
+boolean AI;
 
 
 int leftscore, rightscore, timer;
+soundFile fail, success, music; 
+
 
 void setup() {
   size(800, 600, P2D);
+  music.play();
 
   leftx = 0;
   lefty = height/2;
