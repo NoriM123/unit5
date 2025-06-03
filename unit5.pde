@@ -19,12 +19,10 @@ boolean AI;
 
 
 int leftscore, rightscore, timer;
-soundFile fail, success, music; 
 
 
 void setup() {
   size(800, 600, P2D);
-  music.play();
 
   leftx = 0;
   lefty = height/2;
@@ -46,7 +44,6 @@ void setup() {
 
   wkey = skey = upkey = downkey = false;
   timer = 150;
-
 }
 
 void draw() {

@@ -17,7 +17,9 @@ void pauseClicks() {
   }
 
   if (mouseX > width/2 - width/2 && mouseX < width/2 + width/2 && mouseY < 7*height/9 +50 && mouseY >7*height/9 -50) {
-    mode = GAME;
+    mode = INTRO;
+    rightscore = 0;
+    leftscore = 0;
     resetServe();
   }
 }
