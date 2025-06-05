@@ -8,7 +8,7 @@ void game() {
   pausebutton();
   timer();
   lines();
-
+  player.play();
   scoreboard();
 
     if (wkey == true && lefty  >  105) lefty = lefty - 5;

@@ -2,7 +2,8 @@ void gameover() {
   background(0);
   textSize(40);
   fill(255);
-
+  player.pause();
+  SUCCESS.play();
   text("LEFT WON", width/2-88, 100);
 
   circle(width/2, height/2, 100);

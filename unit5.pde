@@ -1,5 +1,9 @@
 //pong
-import processing.sound.*;
+import ddf.minim.*;
+Minim minim;
+AudioPlayer player;
+AudioPlayer SUCCESS;
+AudioPlayer FAILURE; 
 
 int mode;
 final int INTRO = 1;
@@ -23,7 +27,7 @@ int leftscore, rightscore, timer;
 
 void setup() {
   size(800, 600, P2D);
-
+  minim = new Minim(this);
   leftx = 0;
   lefty = height/2;
   leftd = 150;
@@ -44,6 +48,11 @@ void setup() {
 
   wkey = skey = upkey = downkey = false;
   timer = 150;
+  
+  
+  player = minim.loadFile("MUSIC.mp3");
+  SUCCESS = minim.loadFile("SUCCESS.wav");
+  FAILURE = minim.loadFile("FAILURE.wav");
 }
 
 void draw() {

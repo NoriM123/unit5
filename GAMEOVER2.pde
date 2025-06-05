@@ -2,9 +2,13 @@ void gameover2() {
   background(0);
   textSize(40);
   fill(255);
-
+   player.pause();
+   SUCCESS.play();
   text("RIGHT WON", width/2-88, 100);
-
+  if (AI = true){
+   SUCCESS.pause();
+   FAILURE.play();
+  }
   circle(width/2, height/2, 100);
   fill(0);
   triangle(width/2-7, height/2+10, width/2-7, height/2-10, width/2+13, height/2);
